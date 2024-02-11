@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AddLostItem } from './AddLostItem';
+import { ReportItem } from './ReportItem';
 
 const LostHub = () => {
   const [search, setSearch] = useState('');
@@ -107,6 +108,7 @@ const LostHub = () => {
       : item.name.toLowerCase().includes(search);
   });
   const [showAddItem, SetShowAddItem] = useState(false);
+  const [showReportItem, SetShowReportItem] = useState(false);
 
   return (
     <div className='text-2xl m-1'>
@@ -146,6 +148,14 @@ const LostHub = () => {
               <label>{item.name}</label>
               <p className='text-sm'>Lost from : {item.lostfromwhere}</p>
               <p className='text-sm'>Lost Date Time : {item.date}</p>
+              <button
+                className='bg-green-700 p-1 text-lg mt-2'
+                onClick={() => {
+                  SetShowReportItem(true);
+                }}
+              >
+                Report
+              </button>
             </div>
           ))
         ) : (
@@ -155,6 +165,11 @@ const LostHub = () => {
         {showAddItem && (
           <div className='fixed top-0 left-0 backdrop-blur-md w-[100vw] h-[100vh] flex items-center justify-center'>
             <AddLostItem SetShowAddItem={SetShowAddItem} />
+          </div>
+        )}
+        {showReportItem && (
+          <div className='fixed top-0 left-0 backdrop-blur-md w-[100vw] h-[100vh] flex items-center justify-center'>
+            <ReportItem SetShowReportItem={SetShowReportItem}/>
           </div>
         )}
       </div>
