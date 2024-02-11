@@ -151,9 +151,9 @@ const LostHub = () => {
         )) : (<div className='text-white-400'> No result found</div>)}
 
         {
-          // <div className='fixed top-0 left-0 backdrop-brightness-50 w-[100vw] h-[100vh]'>
-          //   {/* <AddLostItem /> */}
-          // </div>
+          <div className='fixed top-0 left-0 backdrop-brightness-50 w-[100vw] h-[100vh]'>
+            <AddLostItem />
+          </div>
 
 
         }
