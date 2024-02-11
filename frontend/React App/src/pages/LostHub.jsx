@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AddLostItem } from './AddLostItem';
 
 const LostHub = () => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   const lostItems = [
     {
       id: 1,
@@ -128,40 +128,38 @@ const LostHub = () => {
           placeholder='Search lost items...'
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button >Search</button>
+        <button>Search</button>
       </div>
       <div className='flex flex-row items-center justify-center flex-wrap gap-8'>
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item) => (
+            <div
+              key={item.id}
+              className='cursor-pointer hover:opacity-80 transition-all hover:scale-105'
+            >
+              <img
+                src={item.img}
+                className='border border-white rounded-xl w-[13rem] h-[10rem] object-cover'
+                width={200}
+                alt='Lost item image'
+              />
+              <label>{item.name}</label>
+              <p className='text-sm'>Lost from : {item.lostfromwhere}</p>
+              <p className='text-sm'>Lost Date Time : {item.date}</p>
+            </div>
+          ))
+        ) : (
+          <div className='text-white-400'> No result found</div>
+        )}
 
-        {filteredItems.length > 0 ? filteredItems.map((item) => (
-
-          <div
-            key={item.id}
-            className='cursor-pointer hover:opacity-80 transition-all hover:scale-105'
-          >
-            <img
-              src={item.img}
-              className='border border-white rounded-xl w-[13rem] h-[10rem] object-cover'
-              width={200}
-              alt='Lost item image'
-            />
-            <label>{item.name}</label>
-            <p className='text-sm'>Lost from : {item.lostfromwhere}</p>
-            <p className='text-sm'>Lost Date Time : {item.date}</p>
+        {showAddItem && (
+          <div className='fixed top-0 left-0 backdrop-blur-md w-[100vw] h-[100vh] flex items-center justify-center'>
+            <AddLostItem SetShowAddItem={SetShowAddItem} />
           </div>
-        )) : (<div className='text-white-400'> No result found</div>)}
-
-        {
-          <div className='fixed top-0 left-0 backdrop-brightness-50 w-[100vw] h-[100vh]'>
-            <AddLostItem />
-          </div>
-
-
-        }
-        </div>
-        </div>
-
-
-        );
+        )}
+      </div>
+    </div>
+  );
 };
 
-        export default LostHub;
+export default LostHub;
