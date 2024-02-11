@@ -140,6 +140,7 @@ const LostHub = () => {
               <label>{item.name}</label>
               <p className='text-sm'>Lost from : {item.lostfromwhere}</p>
               <p className='text-sm'>Lost Date Time : {item.date}</p>
+              <button className='bg-green-600 p-1 text-xl my-2'>Report</button>
             </div>
           );
         })}
