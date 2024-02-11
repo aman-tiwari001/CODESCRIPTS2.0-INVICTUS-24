@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { AddLostItem } from './AddLostItem';
 
 const LostHub = () => {
@@ -100,11 +101,20 @@ const LostHub = () => {
     },
   ];
 
+  const [showAddItem, SetShowAddItem] = useState(false);
+
   return (
     <div className='text-2xl m-1'>
       <div className='flex justify-between p-2'>
         <h1>LostHub</h1>
-        <button className='bg-red-500 text-md py-1'>Add Lost item</button>
+        <button
+          className='bg-red-500 text-md py-1'
+          onClick={() => {
+            SetShowAddItem(true);
+          }}
+        >
+          Add Lost item
+        </button>
       </div>
       <div className='flex justify-center my-7'>
         <input
@@ -134,11 +144,11 @@ const LostHub = () => {
           );
         })}
       </div>
-      {
-        // <div className='fixed top-0 left-0 backdrop-brightness-50 w-[100vw] h-[100vh]'>
-        //   {/* <AddLostItem /> */}
-        // </div>
-      }
+      {showAddItem && (
+        <div className='fixed top-0 left-0 backdrop-blur-md w-[100vw] h-[100vh] flex items-center justify-center'>
+          <AddLostItem SetShowAddItem={SetShowAddItem} />
+        </div>
+      )}
     </div>
   );
 };
