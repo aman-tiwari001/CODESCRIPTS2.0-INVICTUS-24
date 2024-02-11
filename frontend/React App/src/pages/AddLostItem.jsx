@@ -19,6 +19,7 @@ export const AddLostItem = ({ SetShowAddItem }) => {
           className='bg-gray-800 rounded-xl p-2 text-[1.1rem]'
           type='text'
           placeholder='Name of lost item'
+          required
         />
         <div className='flex items-center gap-3'>
           <label className='text-[1.1rem]'>Lost Date Time : </label>
@@ -27,6 +28,7 @@ export const AddLostItem = ({ SetShowAddItem }) => {
             type='date'
             name=''
             id=''
+            required
           />
         </div>
         <input
@@ -34,11 +36,13 @@ export const AddLostItem = ({ SetShowAddItem }) => {
           type='file'
           name=''
           id=''
+          required
         />
         <input
           className='bg-gray-800 rounded-xl p-2 text-[1.1rem]'
           type='text'
           placeholder='Location where it lost'
+          required
         />
         <textarea
           className='bg-gray-800 rounded-xl p-2 text-[1.1rem]'

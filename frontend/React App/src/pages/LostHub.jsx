@@ -101,6 +101,24 @@ const LostHub = () => {
       date: '28 Feb 2024',
       details: "Lost my USB drive in the computer lab. It's a Kingston 16GB.",
     },
+    {
+      id: 11,
+      name: 'Phone',
+      img: 'https://5.imimg.com/data5/SELLER/Default/2021/9/WI/ZP/XB/58263536/motorola-smart-phone.jpg',
+      type: 'Electronics',
+      lostfromwhere: 'Computer Lab',
+      date: '12 Feb 2024',
+      details: "Lost my phone in the computer lab. It's a MOTO 5x 16GB.",
+    },
+    {
+      id: 12,
+      name: 'Wrist Watch',
+      img: 'https://media.casioindiashop.com/assets/products-images/big-image/D011.webp?scale.height=400',
+      type: 'Electronics',
+      lostfromwhere: 'Library',
+      date: '1 Feb 2024',
+      details: "Lost my wrist watch casio 1500",
+    },
   ];
   const filteredItems = lostItems.filter((item) => {
     return search.toLowerCase() === ''
@@ -113,7 +131,7 @@ const LostHub = () => {
   return (
     <div className='text-2xl m-1'>
       <div className='flex justify-between p-2'>
-        <h1>LostHub</h1>
+        <h1 className='font-mono'>LostHub</h1>
         <button
           className='bg-red-500 text-md py-1'
           onClick={() => {
@@ -130,7 +148,7 @@ const LostHub = () => {
           placeholder='Search lost items...'
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button>Search</button>
+        <button className='bg-blue-400'>Search</button>
       </div>
       <div className='flex flex-row items-center justify-center flex-wrap gap-8'>
         {filteredItems.length > 0 ? (
@@ -145,6 +163,7 @@ const LostHub = () => {
                 width={200}
                 alt='Lost item image'
               />
+
               <label>{item.name}</label>
               <p className='text-sm'>Lost from : {item.lostfromwhere}</p>
               <p className='text-sm'>Lost Date Time : {item.date}</p>
